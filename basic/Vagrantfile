@@ -8,16 +8,8 @@ Vagrant.configure("2") do |config|
     server.vm.box = "ubuntu/bionic64"
     server.vm.host_name = "puppet-server.example.com"
     server.vm.network "private_network", ip: "192.168.0.103"
-
-    server.vm.provision :shell do |s|
-      s.path = "./scripts/hosts.sh"
-      s.privileged = false
-    end
-
-    server.vm.provision :shell do |s|
-      s.path = "./scripts/server.sh"
-      s.privileged = false
-    end
+    server.vm.provision "shell", path: "./scripts/hosts.sh"
+    server.vm.provision "shell", path: "./scripts/server.sh"
   end
 
   # Agent
@@ -28,15 +20,7 @@ Vagrant.configure("2") do |config|
     agent.vm.box = "ubuntu/bionic64"
     agent.vm.host_name = "puppet-agent.example.com"
     agent.vm.network "private_network", ip: "192.168.0.104"
-
-    agent.vm.provision :shell do |s|
-      s.path = "./scripts/hosts.sh"
-      s.privileged = false
-    end
-
-    agent.vm.provision :shell do |s|
-      s.path = "./scripts/agent.sh"
-      s.privileged = false
-    end
+    agent.vm.provision "shell", path: "./scripts/hosts.sh"
+    agent.vm.provision "shell", path: "./scripts/agent.sh"
   end
 end
