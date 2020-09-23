@@ -79,22 +79,17 @@ Notice: Installing -- do not interrupt ...
   └── puppetlabs-stdlib (v6.4.0)
 ```
 
-然後新增以下檔案：
+然後執行以下指令來新增 manifest 檔案：
 
 ```bash
-$ sudo vi /etc/puppetlabs/code/environments/production/manifests/site.pp
-```
-
-內容如下：
-
-```
-node 'puppet-agent.example.com' {
+$ echo "node 'puppet-agent.example.com' {
   class { 'apache': }             # use apache module
-  apache::vhost { 'localhost':  # define vhost resource
+  apache::vhost { 'puppet-agent.example.com':  # define vhost resource
     port    => '80',
     docroot => '/var/www/html'
   }
 }
+" | sudo tee /etc/puppetlabs/code/environments/production/manifests/site.pp
 ```
 
 回到 agent ，再測試一次：
@@ -104,6 +99,8 @@ $ sudo /opt/puppetlabs/bin/puppet agent --test
 ```
 
 應該會出現一大串跟 Apache 有關的資訊，這麼一來就 puppet agent 的驗證就完成了。
+
+最後你可以參考[《 Puppet 從入門就放棄》](https://shazi7804.gitbooks.io/puppet-manage-guide/)的介紹來進一步學習 Puppet 。
 
 ## 踩雷
 
