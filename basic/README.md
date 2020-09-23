@@ -1,15 +1,6 @@
-# Puppet 練習
+# 基礎：建立 Server 與 Agent
 
-## 需求
-
-- [Vagrant](https://www.vagrantup.com/)
-- [VirtualBox](https://www.virtualbox.org/)
-
-以上套件在 Mac 上可以用 `brew cask install vagrant virtualbox` 來安裝。
-
-## 步驟
-
-### 用 Vagrant 建立 Server 與 Agent
+## 步驟一：用 Vagrant 建立 Server 與 Agent
 
 首先在專案目錄下執行：
 
@@ -61,7 +52,7 @@ Notice: Applied catalog in 0.02 seconds
 
 要注意的是， agent 要啟動才會發 CA request 給 server 。
 
-### 測試 Agent
+## 步驟二：測試 Agent
 
 接下來要驗證我們的 server 和 agent ，這裡用安裝 apache 來做例子。
 
